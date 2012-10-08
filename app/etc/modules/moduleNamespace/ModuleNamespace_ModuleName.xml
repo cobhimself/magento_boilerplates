@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+		 File Description:
+		 Module enable xml file.
+
+		 File Name Restrictions:
+		 Repalce $ModuleNamespace with the name of your module's namespace
+		 and $ModuleName with the name of your module.
+
+		 File Location: app/etc/modules/$ModuleNamespace/$ModuleName
+
+		 Placeholders:
+				 Namespace: $ModuleNamespace
+				 Module Name: $ModuleName
+				 Code Pool: $codePool
+
+		 All comments can be safely deleted if desired!
+-->
+<!-- This file gets the module activated within the system. -->
+<!--  -->
+<config>
+	<modules>
+    <!-- correlates to the folder structure under the code pool below.
+    app/code/$codePool>/$ModuleNamespace/$ModuleName-->
+    <$ModuleName>
+			<active>true</active>
+			<codePool>local</codePool>
+		</$ModuleName>
+	</modules>
+</config>

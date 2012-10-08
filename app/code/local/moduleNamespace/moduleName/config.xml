@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+		 File Description:
+		 Module boilerplate config.xml.
+
+		 File Name Restrictions:
+		 This file MUST be named config.xml.
+
+		 File Location: app/code/local/$moduleNamespace/$moduleName
+
+		 Instructions:
+		 Replace $ModuleNamespace with the name of your module's namespace
+		 and $ModuleName with the name of your module.
+
+		 Placeholders:
+				 Namespace: $ModuleNamespace
+				 Module Name: $ModuleName
+				 Store code string: $storeCodeString
+
+		 All comments can be safely deleted if desired!
+-->
+<config>
+  <!-- Specify options -->
+  <default>
+    <!--
+    This node creates options that are available to all stores.
+
+    Example:
+    <some>
+      <random>
+        <xpath>
+          Here is a value.
+        </xpath>
+      </random>
+    </some>
+
+    Access Path:
+    Mage::getstoreConfig('some/random/xpath'); //Returns string value
+    
+    OR
+
+    //Returns object
+    Mage::getConfig()->getNode('default/some/random/xpath');
+    -->
+  </default>
+  <stores>
+    <!--
+    This node creates options that are available only to the appropriate store xpath.
+    Example:
+    <$storeCodeString>
+      <some>
+        <random>
+          <xpath>
+            Here is a value.
+          </xpath>
+        </random>
+      </some>
+		</$storeCodeString>
+
+    Access Path:
+    Mage::getstoreConfig('some/random/xpath'); //Returns string value
+    
+    OR
+
+    //Returns object
+    Mage::getConfig()->getNode('stores/$storeCodeString/random/xpath');
+
+    The above access path is only when the current store view is
+    $storeCodeString.
+    -->
+  </stores>
+</config>
