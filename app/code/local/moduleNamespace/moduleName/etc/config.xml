@@ -6,7 +6,8 @@
 		 File Name Restrictions:
 		 This file MUST be named config.xml.
 
-		 File Location: app/code/local/$moduleNamespace/$moduleName
+		 File Location: app/code/local/$ModuleNamespace/$ModuleName
+		 ("local" can be either local or community")
 
 		 Instructions:
 		 Replace $ModuleNamespace with the name of your module's namespace
@@ -20,53 +21,104 @@
 		 All comments can be safely deleted if desired!
 -->
 <config>
-  <!-- Specify options -->
-  <default>
-    <!--
-    This node creates options that are available to all stores.
+	<!-- Specify options -->
+	<default>
+	<!--
+	This node creates options that are available to all stores.
 
-    Example:
-    <some>
-      <random>
-        <xpath>
-          Here is a value.
-        </xpath>
-      </random>
-    </some>
+	Example:
+	<some>
+	  <random>
+		<xpath>
+		  Here is a value.
+		</xpath>
+	  </random>
+	</some>
 
-    Access Path:
-    Mage::getstoreConfig('some/random/xpath'); //Returns string value
-    
-    OR
+	Access Path:
+	Mage::getstoreConfig('some/random/xpath'); //Returns string value
 
-    //Returns object
-    Mage::getConfig()->getNode('default/some/random/xpath');
-    -->
-  </default>
-  <stores>
-    <!--
-    This node creates options that are available only to the appropriate store xpath.
-    Example:
-    <$storeCodeString>
-      <some>
-        <random>
-          <xpath>
-            Here is a value.
-          </xpath>
-        </random>
-      </some>
-		</$storeCodeString>
+	OR
 
-    Access Path:
-    Mage::getstoreConfig('some/random/xpath'); //Returns string value
-    
-    OR
+	//Returns object
+	Mage::getConfig()->getNode('default/some/random/xpath');
+	-->
+	</default>
+	<modules>
+	<!--Example: <ModuleNamespace_ModuleName>
+		This should correlate with /etc/{{ModuleNamespace}}/{{ModuleNamespace}}_{{ModuleName}}.xml -->
+		<{{ModuleNamespace}}_{{ModuleName}}>
+		</{ModuleNamespace_ModuleName}>
+	</modules>
 
-    //Returns object
-    Mage::getConfig()->getNode('stores/$storeCodeString/random/xpath');
+	<frontend>
+	<!--The <frontend> tag refers to a Magento Area. For now, think of
+		Areas as individual Magento applications. The "frontend" Area is
+		the public facing Magento shopping cart application. The "admin"
+		Area is the the private administrative console application. The
+		"install" Area is the application you use to run though
+		installing Magento the first time.
 
-    The above access path is only when the current store view is
-    $storeCodeString.
-    -->
-  </stores>
+		Source: http://www.magentocommerce.com/knowledge-base/entry/magento-for-dev-part-3-magento-controller-dispatch -->
+		<routers>
+			<{{modulename}}>
+			<!--This tag should be the lowercase version of your module
+				name. Technically this tag defines our route name.
+
+				You'll also notice our frontName matches our module
+				name. It's a loose convention to have frontNames match
+				the module names, but it's not a requirement. In your
+				own modules, it's probably better to use a route name
+				that's a combination of your module name and package
+				name to avoid possible namespace collisions.-->
+				<use>standard</use>
+				<args>
+					<module>{{ModuleNamespace}}_{{ModuleName}}</module>
+					<!--
+						When a router parses a URL, it gets separated as follows
+
+							http://example.com/frontName/actionControllerName/actionMethod/
+
+						So, by defining a value of "{{modulefrontname}}" in the
+						<frontName> tags, we're telling Magento that we
+						want the system to respond to URLs in the form
+						of
+
+							http://example.com/{{modulefrontname}}/*
+
+						Many developers new to Magento confuse this
+						frontName with the Front Controller object.
+						They are not the same thing. The frontName
+						belongs solely to routing. -->
+						<frontName>{{modulefrontname}}</frontName>
+				</args>
+			</{{modulename}}>
+		</routers>
+	</frontend>
+	<stores>
+	<!--
+	This node creates options that are available only to the appropriate store xpath.
+	Example:
+	<$storeCodeString>
+		<some>
+			<random>
+				<xpath>
+					Here is a value.
+				</xpath>
+			</random>
+		</some>
+	</$storeCodeString>
+
+	Access Path:
+	Mage::getstoreConfig('some/random/xpath'); //Returns string value
+
+	OR
+
+	//Returns object
+	Mage::getConfig()->getNode('stores/$storeCodeString/random/xpath');
+
+	The above access path is only when the current store view is
+	$storeCodeString.
+	-->
+	</stores>
 </config>
