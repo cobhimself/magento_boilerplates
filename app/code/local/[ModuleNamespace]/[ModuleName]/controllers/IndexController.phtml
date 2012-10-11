@@ -1,0 +1,67 @@
+<?php
+/**
+ * File Description:
+ * {{ModuleNamespace}}_{{ModuleName}}'s Index Controller
+ *
+ * File Name Restrictions:
+ * This file MUST be named IndexController.phtml
+ *
+ * File Location:
+ * app/code/local/{{ModuleNamespace}}/{{ModuleName}}/controllers/IndexController.phtml
+ * ("local" can be either local or community")
+ * 
+ * Helpful Magento PHP Docs:
+ * http://docs.magentocommerce.com/Mage_Core/Mage_Core_Controller_Front_Action.html
+ *
+ * All comments can be safely deleted if desired!
+ *---------------------------------------------------
+ * Info from http://www.magentocommerce.com/knowledge-base/entry/magento-for-dev-part-3-magento-controller-dispatch
+ *
+ * How should Action Controllers be named?  Reference the
+ * config.frontend.routers.{{ModuleName}}.args.module tag in
+ * ../etc/config.xml:
+ * 
+ * <module>{{ModuleNamespace}}_{{ModuleName}}</module>
+ * 
+ * An Action Controller's name will start with the string in the <module> tag, 
+ * followed by an undersore, which will be followed by the Action Controller's 
+ * name (in this case Index) followed by the word "Controller".
+ * 
+ * All Action Controllers need Mage_Core_Controller_Front_Action as an ancestor.
+ */
+
+	/**
+	 * Index Controller for {{ModuleNamespace}}_{{ModuleName}}
+	 * Called when url is www.example.com/{{modulefrontname}}/index/*
+	 * 
+	 * In the example above, 'index' refers to "Index" in "_IndexController".
+	 */
+	class {{ModuleNamespace}}_{{ModuleName}}_IndexController extends Mage_Core_Controller_Front_Action {        
+
+	/**
+	 * Index Action for {{ModuleNamespace}}_{{ModuleName}}
+	 * Called when url:
+	 * IS www.example.com/{{modulefronname}}/index/index/
+	 * OR www.example.com/{{modulefronname}}/index/
+	 * OR www.example.com/{{modulefronname}}/
+	 */
+    public function indexAction() {
+		echo 'Index Action for {{ModuleNamespace}}_{{ModuleName}}!';
+		$this->loadLayout();
+		$this->renderLayout();
+    }
+
+	/*{:Example:}*/
+	/**
+	 * Example non-default Action Controller:
+	 * Would be called by the following URL:
+	 * http://example.com/helloworld/index/boilerplate
+	 */ 
+	 
+	public function boilerplateAction() {
+		echo 'boilerplate Action for {{ModuleNamespace}}_{{ModuleName}}!';
+		$this->loadLayout();
+		$this->renderLayout();
+	}
+	/*{:/Example:}*/
+}

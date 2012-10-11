@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 		 File Description:
-		 Module boilerplate config.xml.
+		 {{ModuleNamespace}} {{ModuleName}} config.xml.
 
 		 File Name Restrictions:
 		 This file MUST be named config.xml.
 
-		 File Location: app/code/local/$ModuleNamespace/$ModuleName
+		 File Location: app/code/local/{{ModuleNamespace}}/{{ModuleName}}
 		 ("local" can be either local or community")
 
 		 Instructions:
-		 Replace $ModuleNamespace with the name of your module's namespace
-		 and $ModuleName with the name of your module.
-
-		 Placeholders:
-				 Namespace: $ModuleNamespace
-				 Module Name: $ModuleName
-				 Store code string: $storeCodeString
+		 Replace {{ModuleNamespace}} with the name of your module's namespace
+		 and {{ModuleName}} with the name of your module.
 
 		 All comments can be safely deleted if desired!
 -->
@@ -45,10 +40,14 @@
 	-->
 	</default>
 	<modules>
+	<!--Provides Magento with the base model name for any models in this
+		module.
+	-->
 	<!--Example: <ModuleNamespace_ModuleName>
 		This should correlate with /etc/{{ModuleNamespace}}/{{ModuleNamespace}}_{{ModuleName}}.xml -->
-		<{{ModuleNamespace}}_{{ModuleName}}>
-		</{ModuleNamespace_ModuleName}>
+		<{{ModuleNamespace}}>
+			<class>{{ModuleNamespace}}_{{ModuleName}}_Model</class>
+		</{{ModuleNamespace}}>
 	</modules>
 
 	<frontend>

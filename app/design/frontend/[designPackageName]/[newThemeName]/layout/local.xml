@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--Local theme overrides for {{designPackageName}}/{{newThemeName}}.
+
+	File Name Restrictions:
+	This file MUST be named local.xml.
+
+	File Location:
+	app/design/frontend/{{designPackageName}}/{{newThemeName}}/local.xml
+
+	All comments can be safely deleted if desired!.
+	##################################################################
+	Info from http://www.magentocommerce.com/
+		knowledge-base/entry/
+		magento-for-dev-part-4-magento-layouts-blocks-and-templates
+
+	Layout Objects are XML objects that define which Blocks are included
+	on a page, and which Block(s) should kick off the rendering process.
+      
+	Behind the scenes there are <frontend><layout><updates /> and
+	<adminhtml><layout><updates /> sections of the global config that
+	contains nodes with all the file names to load for the respective
+	area. Once the files listed in the config have been combined,
+	Magento will merge in one last xml file, local.xml. This is the file
+	where you're able to add your customizations to your Magento
+	install.
+
+	Therefore, If we create a block with the same name as an already
+	existing block, the new block instance will replace the original
+	instance. This is what we're doing below.
+-->
+
+	
+<layout version="0.1.0">
+	<default>
+	<!--All settings within this <default> tag overrides the <default>
+		layout element for all pages. --> 
+		<block type="page/html" name="root" output="toHtml" template="{{designPackageName}}/{{newThemeName}}/{{newRootPage}}.phtml">
+		</block>
+    </default>
+</layout>

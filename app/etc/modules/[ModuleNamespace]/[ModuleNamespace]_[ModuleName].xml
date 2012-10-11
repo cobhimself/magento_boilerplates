@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+		 File Description:
+		 This file tells magento to enable the module listed below.
+
+		 File Name Restrictions:
+		 Repalce {{ModuleNamespace}} with the name of your module's namespace
+		 and {{ModuleName}} with the name of your module.
+
+		 File Location: app/etc/modules/{{ModuleNamespace}}/{{ModuleName}}
+
+		 All comments can be safely deleted if desired!
+-->
+<!--  -->
+<config>
+	<modules>
+		<!-- correlates to the folder structure under the code pool below.
+		app/code/{{codePool}}>/{{ModuleNamespace}}/{{ModuleName}}-->
+		<{{ModuleNamespace}}_{{ModuleName}}>
+			<active>true</active>
+			<codePool>{{codePool}}</codePool>
+		</{{ModuleNamespace}}_{{ModuleName}}>
+	</modules>
+</config>

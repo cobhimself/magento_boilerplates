@@ -1,0 +1,60 @@
+<?php
+/**
+ * File Description:
+ * {{ModuleNamespace}}_{{ModuleName}}'s {{ControllerName}} Controller
+ *
+ * File Name Restrictions:
+ * This file MUST be named {{ControllerName}}Controller.phtml
+ *
+ * File Location:
+ *
+ app/code/local/$ModuleNamespace/$ModuleName/controllers/{{ControllerName}}Controller.phtml
+ * ("local" can be either local or community")
+ * 
+ * Helpful Magento PHP Docs:
+ * http://docs.magentocommerce.com/Mage_Core/Mage_Core_Controller_Front_Action.html
+ *
+ * All comments can be safely deleted if desired!
+ *---------------------------------------------------
+ * Info from http://www.magentocommerce.com/knowledge-base/entry/magento-for-dev-part-3-magento-controller-dispatch
+ *
+ * How should Action Controllers be named?  Reference the
+ * config.frontend.routers.{{ModuleName}}.args.module tag in
+ * ../etc/config.xml:
+ * 
+ * <module>{{ModuleNamespace}}_{{ModuleName}}</module>
+ * 
+ * An Action Controller's name will start with the string in the <module> tag, 
+ * followed by an undersore, which will be followed by the Action Controller's 
+ * name (in this case {{ControllerName}}) followed by the word "Controller".
+ * 
+ * All Action Controllers need Mage_Core_Controller_Front_Action as an ancestor.
+ */
+
+	/**
+	 * {{ControllerName}} Controller for {{ModuleNamespace}}_{{ModuleName}}
+	 * Called when url is
+	 * www.example.com/{{modulefrontname}}/{{controllername}}/*
+	 */
+	 class {{ModuleNamespace}}_{{ModuleName}}_{{ControllerName}}Controller extends Mage_Core_Controller_Front_Action {        
+
+	/**
+	 * Index Action for {{ModuleNamespace}}_{{ModuleName}}
+	 * Called when url:
+	 * IS www.example.com/{{modulefrontname}}/index/index/
+	 * OR www.example.com/{{modulefronname}}/index/
+	 * OR www.example.com/{{modulefronname}}/
+	 */
+    public function indexAction() {
+		echo 'Index Action for {{ModuleNamespace}}_{{ModuleName}}!';
+    }
+
+	/**
+	* {{ActionName}} Action Controller.
+	 * Called by the following URL:
+	 * http://example.com/{{modulefrontname}}/{{controllername}}/{{actionname}}/
+	 */ 
+	 public function {{actionname}}Action() {
+		 echo '{{ActionName}} Action for {{ModuleNamespace}}_{{ModuleName}}!';
+	}
+}
